@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4EF81CDF1AEAEB7B003F362C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81CDE1AEAEB7B003F362C /* AppDelegate.swift */; };
+		4EF81CE21AEAEB7B003F362C /* KJNotepad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81CE01AEAEB7B003F362C /* KJNotepad.xcdatamodeld */; };
+		4EF81CE41AEAEB7B003F362C /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81CE31AEAEB7B003F362C /* MasterViewController.swift */; };
+		4EF81CE61AEAEB7B003F362C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81CE51AEAEB7B003F362C /* DetailViewController.swift */; };
+		4EF81CE91AEAEB7B003F362C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF81CE71AEAEB7B003F362C /* Main.storyboard */; };
+		4EF81CEB1AEAEB7B003F362C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF81CEA1AEAEB7B003F362C /* Images.xcassets */; };
+		4EF81CEE1AEAEB7C003F362C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF81CEC1AEAEB7C003F362C /* LaunchScreen.xib */; };
+		4EF81CFA1AEAEB7C003F362C /* KJNotepadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81CF91AEAEB7C003F362C /* KJNotepadTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4EF81CF41AEAEB7C003F362C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4EF81CD11AEAEB7B003F362C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EF81CD81AEAEB7B003F362C;
+			remoteInfo = KJNotepad;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4EF81CD91AEAEB7B003F362C /* KJNotepad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KJNotepad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EF81CDD1AEAEB7B003F362C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EF81CDE1AEAEB7B003F362C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4EF81CE11AEAEB7B003F362C /* KJNotepad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KJNotepad.xcdatamodel; sourceTree = "<group>"; };
+		4EF81CE31AEAEB7B003F362C /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		4EF81CE51AEAEB7B003F362C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		4EF81CE81AEAEB7B003F362C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4EF81CEA1AEAEB7B003F362C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4EF81CED1AEAEB7C003F362C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		4EF81CF31AEAEB7C003F362C /* KJNotepadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KJNotepadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EF81CF81AEAEB7C003F362C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EF81CF91AEAEB7C003F362C /* KJNotepadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KJNotepadTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4EF81CD61AEAEB7B003F362C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EF81CF01AEAEB7C003F362C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4EF81CD01AEAEB7B003F362C = {
+			isa = PBXGroup;
+			children = (
+				4EF81CDB1AEAEB7B003F362C /* KJNotepad */,
+				4EF81CF61AEAEB7C003F362C /* KJNotepadTests */,
+				4EF81CDA1AEAEB7B003F362C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4EF81CDA1AEAEB7B003F362C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4EF81CD91AEAEB7B003F362C /* KJNotepad.app */,
+				4EF81CF31AEAEB7C003F362C /* KJNotepadTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4EF81CDB1AEAEB7B003F362C /* KJNotepad */ = {
+			isa = PBXGroup;
+			children = (
+				4EF81CDE1AEAEB7B003F362C /* AppDelegate.swift */,
+				4EF81CE31AEAEB7B003F362C /* MasterViewController.swift */,
+				4EF81CE51AEAEB7B003F362C /* DetailViewController.swift */,
+				4EF81CE71AEAEB7B003F362C /* Main.storyboard */,
+				4EF81CEA1AEAEB7B003F362C /* Images.xcassets */,
+				4EF81CEC1AEAEB7C003F362C /* LaunchScreen.xib */,
+				4EF81CE01AEAEB7B003F362C /* KJNotepad.xcdatamodeld */,
+				4EF81CDC1AEAEB7B003F362C /* Supporting Files */,
+			);
+			path = KJNotepad;
+			sourceTree = "<group>";
+		};
+		4EF81CDC1AEAEB7B003F362C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4EF81CDD1AEAEB7B003F362C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EF81CF61AEAEB7C003F362C /* KJNotepadTests */ = {
+			isa = PBXGroup;
+			children = (
+				4EF81CF91AEAEB7C003F362C /* KJNotepadTests.swift */,
+				4EF81CF71AEAEB7C003F362C /* Supporting Files */,
+			);
+			path = KJNotepadTests;
+			sourceTree = "<group>";
+		};
+		4EF81CF71AEAEB7C003F362C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4EF81CF81AEAEB7C003F362C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4EF81CD81AEAEB7B003F362C /* KJNotepad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EF81CFD1AEAEB7C003F362C /* Build configuration list for PBXNativeTarget "KJNotepad" */;
+			buildPhases = (
+				4EF81CD51AEAEB7B003F362C /* Sources */,
+				4EF81CD61AEAEB7B003F362C /* Frameworks */,
+				4EF81CD71AEAEB7B003F362C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KJNotepad;
+			productName = KJNotepad;
+			productReference = 4EF81CD91AEAEB7B003F362C /* KJNotepad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4EF81CF21AEAEB7C003F362C /* KJNotepadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EF81D001AEAEB7C003F362C /* Build configuration list for PBXNativeTarget "KJNotepadTests" */;
+			buildPhases = (
+				4EF81CEF1AEAEB7C003F362C /* Sources */,
+				4EF81CF01AEAEB7C003F362C /* Frameworks */,
+				4EF81CF11AEAEB7C003F362C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4EF81CF51AEAEB7C003F362C /* PBXTargetDependency */,
+			);
+			name = KJNotepadTests;
+			productName = KJNotepadTests;
+			productReference = 4EF81CF31AEAEB7C003F362C /* KJNotepadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4EF81CD11AEAEB7B003F362C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Kristopher Johnson";
+				TargetAttributes = {
+					4EF81CD81AEAEB7B003F362C = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					4EF81CF21AEAEB7C003F362C = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 4EF81CD81AEAEB7B003F362C;
+					};
+				};
+			};
+			buildConfigurationList = 4EF81CD41AEAEB7B003F362C /* Build configuration list for PBXProject "KJNotepad" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4EF81CD01AEAEB7B003F362C;
+			productRefGroup = 4EF81CDA1AEAEB7B003F362C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4EF81CD81AEAEB7B003F362C /* KJNotepad */,
+				4EF81CF21AEAEB7C003F362C /* KJNotepadTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4EF81CD71AEAEB7B003F362C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EF81CE91AEAEB7B003F362C /* Main.storyboard in Resources */,
+				4EF81CEE1AEAEB7C003F362C /* LaunchScreen.xib in Resources */,
+				4EF81CEB1AEAEB7B003F362C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EF81CF11AEAEB7C003F362C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4EF81CD51AEAEB7B003F362C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EF81CE21AEAEB7B003F362C /* KJNotepad.xcdatamodeld in Sources */,
+				4EF81CDF1AEAEB7B003F362C /* AppDelegate.swift in Sources */,
+				4EF81CE41AEAEB7B003F362C /* MasterViewController.swift in Sources */,
+				4EF81CE61AEAEB7B003F362C /* DetailViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EF81CEF1AEAEB7C003F362C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EF81CFA1AEAEB7C003F362C /* KJNotepadTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4EF81CF51AEAEB7C003F362C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4EF81CD81AEAEB7B003F362C /* KJNotepad */;
+			targetProxy = 4EF81CF41AEAEB7C003F362C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4EF81CE71AEAEB7B003F362C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EF81CE81AEAEB7B003F362C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4EF81CEC1AEAEB7C003F362C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EF81CED1AEAEB7C003F362C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4EF81CFB1AEAEB7C003F362C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4EF81CFC1AEAEB7C003F362C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4EF81CFE1AEAEB7C003F362C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = KJNotepad/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4EF81CFF1AEAEB7C003F362C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = KJNotepad/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4EF81D011AEAEB7C003F362C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KJNotepadTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KJNotepad.app/KJNotepad";
+			};
+			name = Debug;
+		};
+		4EF81D021AEAEB7C003F362C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KJNotepadTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KJNotepad.app/KJNotepad";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4EF81CD41AEAEB7B003F362C /* Build configuration list for PBXProject "KJNotepad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EF81CFB1AEAEB7C003F362C /* Debug */,
+				4EF81CFC1AEAEB7C003F362C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EF81CFD1AEAEB7C003F362C /* Build configuration list for PBXNativeTarget "KJNotepad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EF81CFE1AEAEB7C003F362C /* Debug */,
+				4EF81CFF1AEAEB7C003F362C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4EF81D001AEAEB7C003F362C /* Build configuration list for PBXNativeTarget "KJNotepadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EF81D011AEAEB7C003F362C /* Debug */,
+				4EF81D021AEAEB7C003F362C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4EF81CE01AEAEB7B003F362C /* KJNotepad.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4EF81CE11AEAEB7B003F362C /* KJNotepad.xcdatamodel */,
+			);
+			currentVersion = 4EF81CE11AEAEB7B003F362C /* KJNotepad.xcdatamodel */;
+			path = KJNotepad.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4EF81CD11AEAEB7B003F362C /* Project object */;
+}
