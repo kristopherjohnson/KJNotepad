@@ -2,12 +2,12 @@ KJNotepad is a simple iOS app, similar to the built-in "Notes" app, written in S
 
 It demonstrates implementation of these features:
 
-- Core Data
+- Core Data with iCloud syncing
 - split view controller
 - responding to keyboard show/hide notifications
 
 TODO:
 
-- iCloud syncing
+- UI polish
 - sharing
 - WatchKit

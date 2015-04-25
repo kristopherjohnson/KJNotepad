@@ -9,7 +9,11 @@
 import Foundation
 import CoreData
 
-class DataStore {
+@objc class DataStore {
+
+    init() {
+        registerForiCloudNotifications()
+    }
 
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "net.kristopherjohnson.KJNotepad" in the application's documents Application Support directory.
@@ -30,7 +34,12 @@ class DataStore {
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("KJNotepad.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        let options = [
+            NSPersistentStoreUbiquitousContentNameKey: "DataStore",
+            NSMigratePersistentStoresAutomaticallyOption: NSNumber(bool: true),
+            NSInferMappingModelAutomaticallyOption: NSNumber(bool: true)
+        ]
+        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options, error: &error) == nil {
             coordinator = nil
             // Report any error we got.
             var dict = [String: AnyObject]()
@@ -70,5 +79,57 @@ class DataStore {
                 abort()
             }
         }
+    }
+
+    // MARK: - iCloud Support
+
+    private func registerForiCloudNotifications() {
+        let nc = NSNotificationCenter.defaultCenter()
+
+        nc.addObserver(self,
+            selector: "storesWillChange:",
+            name: NSPersistentStoreCoordinatorStoresWillChangeNotification,
+            object: persistentStoreCoordinator)
+
+        nc.addObserver(self,
+            selector: "storesDidChange:",
+            name: NSPersistentStoreCoordinatorStoresDidChangeNotification,
+            object: persistentStoreCoordinator)
+
+        nc.addObserver(self,
+            selector: "persistentStoreDidImportUbiquitousContentChanges:",
+            name: NSPersistentStoreDidImportUbiquitousContentChangesNotification,
+            object: persistentStoreCoordinator)
+    }
+
+    func persistentStoreDidImportUbiquitousContentChanges(changeNotification: NSNotification) {
+        NSLog("NSPersistentStoreDidImportUbiquitousContentChangesNotification received")
+
+        if let context = self.managedObjectContext {
+            context.mergeChangesFromContextDidSaveNotification(changeNotification)
+        }
+    }
+
+    func storesWillChange(notification: NSNotification) {
+        NSLog("NSPersistentStoreCoordinatorStoresWillChangeNotification notification received")
+
+        if let context = self.managedObjectContext {
+            if context.hasChanges {
+                var error: NSError? = nil
+                let success = context.save(&error)
+                if !success && (error != nil) {
+                    NSLog("%@", [error!.localizedDescription])
+                }
+            }
+
+            context.reset()
+        }
+
+        // TODO: refresh the UI
+    }
+
+    func storesDidChange(notification: NSNotification) {
+        NSLog("NSPersistentStoreCoordinatorStoresDidChangeNotification notification received")
+        // TODO: refresh the UI
     }
 }
