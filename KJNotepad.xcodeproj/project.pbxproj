@@ -18,6 +18,7 @@
 		4EF81D041AEAECA0003F362C /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D031AEAECA0003F362C /* Note.swift */; };
 		4EF81D061AEAECCE003F362C /* NoteUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D051AEAECCE003F362C /* NoteUtility.swift */; };
 		4EF81D081AEAFC81003F362C /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D071AEAFC81003F362C /* KeyboardNotification.swift */; };
+		4EF81D0A1AEBDE4E003F362C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D091AEBDE4E003F362C /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		4EF81D031AEAECA0003F362C /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		4EF81D051AEAECCE003F362C /* NoteUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteUtility.swift; sourceTree = "<group>"; };
 		4EF81D071AEAFC81003F362C /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
+		4EF81D091AEBDE4E003F362C /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,15 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				4EF81CDE1AEAEB7B003F362C /* AppDelegate.swift */,
-				4EF81CE51AEAEB7B003F362C /* DetailViewController.swift */,
-				4EF81CEA1AEAEB7B003F362C /* Images.xcassets */,
-				4EF81D071AEAFC81003F362C /* KeyboardNotification.swift */,
-				4EF81CE01AEAEB7B003F362C /* KJNotepad.xcdatamodeld */,
-				4EF81CEC1AEAEB7C003F362C /* LaunchScreen.xib */,
-				4EF81CE71AEAEB7B003F362C /* Main.storyboard */,
-				4EF81CE31AEAEB7B003F362C /* MasterViewController.swift */,
-				4EF81D031AEAECA0003F362C /* Note.swift */,
-				4EF81D051AEAECCE003F362C /* NoteUtility.swift */,
+				4EF81D0B1AEBDF3B003F362C /* Data */,
+				4EF81D0C1AEBDF4A003F362C /* User Interface */,
 				4EF81CDC1AEAEB7B003F362C /* Supporting Files */,
 			);
 			path = KJNotepad;
@@ -125,6 +120,30 @@
 				4EF81CF81AEAEB7C003F362C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EF81D0B1AEBDF3B003F362C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4EF81D091AEBDE4E003F362C /* DataStore.swift */,
+				4EF81CE01AEAEB7B003F362C /* KJNotepad.xcdatamodeld */,
+				4EF81D031AEAECA0003F362C /* Note.swift */,
+				4EF81D051AEAECCE003F362C /* NoteUtility.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		4EF81D0C1AEBDF4A003F362C /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				4EF81CE51AEAEB7B003F362C /* DetailViewController.swift */,
+				4EF81CEA1AEAEB7B003F362C /* Images.xcassets */,
+				4EF81D071AEAFC81003F362C /* KeyboardNotification.swift */,
+				4EF81CEC1AEAEB7C003F362C /* LaunchScreen.xib */,
+				4EF81CE71AEAEB7B003F362C /* Main.storyboard */,
+				4EF81CE31AEAEB7B003F362C /* MasterViewController.swift */,
+			);
+			name = "User Interface";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF81D041AEAECA0003F362C /* Note.swift in Sources */,
+				4EF81D0A1AEBDE4E003F362C /* DataStore.swift in Sources */,
 				4EF81CE21AEAEB7B003F362C /* KJNotepad.xcdatamodeld in Sources */,
 				4EF81D061AEAECCE003F362C /* NoteUtility.swift in Sources */,
 				4EF81CDF1AEAEB7B003F362C /* AppDelegate.swift in Sources */,
@@ -431,6 +451,7 @@
 				4EF81CFF1AEAEB7C003F362C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4EF81D001AEAEB7C003F362C /* Build configuration list for PBXNativeTarget "KJNotepadTests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +460,7 @@
 				4EF81D021AEAEB7C003F362C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
