@@ -5,8 +5,9 @@
         <attribute name="lastEditedDate" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Note" positionX="261" positionY="198" width="128" height="105"/>
+        <element name="Note" positionX="261" positionY="198" width="128" height="120"/>
     </elements>
 </model>

@@ -9,7 +9,20 @@
 import Foundation
 import CoreData
 
+/// Notification posted on the main queue when a NSPersistentStoreCoordinatorStoresWillChangeNotification
+/// is received
+let DataStoreStoresWillChangeNotification
+= "net.kristopherjohnson.KJNotepad.DataStoreStoresWillChangeNotification"
+
+/// Notification posted on the main queue when a NSPersistentStoreCoordinatorStoresDidChangeNotification
+/// is received
+let DataStoreStoresDidChangeNotification
+= "net.kristopherjohnson.KJNotepad.DataStoreStoresDidChangeNotification"
+
+/// Manages the Core Data stack
 @objc class DataStore {
+
+    let dataFileName = "DataStore1"
 
     init() {
         registerForiCloudNotifications()
@@ -31,11 +44,11 @@ import CoreData
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("KJNotepad.sqlite")
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(self.dataFileName + ".sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
         let options = [
-            NSPersistentStoreUbiquitousContentNameKey: "DataStore",
+            NSPersistentStoreUbiquitousContentNameKey: self.dataFileName,
             NSMigratePersistentStoresAutomaticallyOption: NSNumber(bool: true),
             NSInferMappingModelAutomaticallyOption: NSNumber(bool: true)
         ]
@@ -46,10 +59,10 @@ import CoreData
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError(domain: "KJNotepad", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
+            NSLog("%@", "Unresolved error \(error), \(error!.userInfo)")
             abort()
         }
 
@@ -62,21 +75,24 @@ import CoreData
         if coordinator == nil {
             return nil
         }
-        var managedObjectContext = NSManagedObjectContext()
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
+        managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return managedObjectContext
         }()
 
     // MARK: - Core Data Saving support
 
     func saveContext () {
-        if let moc = self.managedObjectContext {
-            var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+        if let context = self.managedObjectContext {
+            context.performBlockAndWait {
+                var error: NSError? = nil
+                if context.hasChanges && !context.save(&error) {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog("%@", "Unresolved error \(error), \(error!.userInfo)")
+                    abort()
+                }
             }
         }
     }
@@ -102,34 +118,50 @@ import CoreData
             object: persistentStoreCoordinator)
     }
 
-    func persistentStoreDidImportUbiquitousContentChanges(changeNotification: NSNotification) {
-        NSLog("NSPersistentStoreDidImportUbiquitousContentChangesNotification received")
+    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
+        NSLog("%@", "\(notification.name) received")
 
         if let context = self.managedObjectContext {
-            context.mergeChangesFromContextDidSaveNotification(changeNotification)
+            context.performBlock {
+                context.mergeChangesFromContextDidSaveNotification(notification)
+            }
         }
     }
 
     func storesWillChange(notification: NSNotification) {
-        NSLog("NSPersistentStoreCoordinatorStoresWillChangeNotification notification received")
+        NSLog("%@", "\(notification.name) received")
 
-        if let context = self.managedObjectContext {
-            if context.hasChanges {
-                var error: NSError? = nil
-                let success = context.save(&error)
-                if !success && (error != nil) {
-                    NSLog("%@", [error!.localizedDescription])
-                }
-            }
-
-            context.reset()
+        // Notify the UI
+        dispatch_sync(dispatch_get_main_queue()) {
+            self.postNotification(DataStoreStoresWillChangeNotification)
         }
 
-        // TODO: refresh the UI
+        if let context = self.managedObjectContext {
+            context.performBlockAndWait {
+                if context.hasChanges {
+                    var error: NSError? = nil
+                    let success = context.save(&error)
+                    if !success && (error != nil) {
+                        NSLog("%@", [error!.localizedDescription])
+                    }
+                }
+                else {
+                    context.reset()
+                }
+            }
+        }
     }
 
     func storesDidChange(notification: NSNotification) {
-        NSLog("NSPersistentStoreCoordinatorStoresDidChangeNotification notification received")
-        // TODO: refresh the UI
+        NSLog("%@", "\(notification.name) received")
+
+        // Notify the UI
+        dispatch_sync(dispatch_get_main_queue()) {
+            self.postNotification(DataStoreStoresDidChangeNotification)
+        }
+    }
+
+    func postNotification(name: String) {
+        NSNotificationCenter.defaultCenter().postNotificationName(name, object: self)
     }
 }

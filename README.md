@@ -16,4 +16,5 @@ It demonstrates implementation of these features:
 
 I found these resources helpful:
 
+- _iCloud Programming Guide for Core Data_: <https://developer.apple.com/library/ios/documentation/DataManagement/Conceptual/UsingCoreDataWithiCloudPG/UsingSQLiteStoragewithiCloud/UsingSQLiteStoragewithiCloud.html>
 - "iCloud and Core Data" by Matthew Bischoff & Brian Capps: <http://www.objc.io/issue-10/icloud-core-data.html>

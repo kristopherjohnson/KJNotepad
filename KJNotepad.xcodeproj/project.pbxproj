@@ -15,10 +15,10 @@
 		4EF81CEB1AEAEB7B003F362C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF81CEA1AEAEB7B003F362C /* Images.xcassets */; };
 		4EF81CEE1AEAEB7C003F362C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF81CEC1AEAEB7C003F362C /* LaunchScreen.xib */; };
 		4EF81CFA1AEAEB7C003F362C /* KJNotepadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81CF91AEAEB7C003F362C /* KJNotepadTests.swift */; };
-		4EF81D041AEAECA0003F362C /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D031AEAECA0003F362C /* Note.swift */; };
 		4EF81D061AEAECCE003F362C /* NoteUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D051AEAECCE003F362C /* NoteUtility.swift */; };
 		4EF81D081AEAFC81003F362C /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D071AEAFC81003F362C /* KeyboardNotification.swift */; };
 		4EF81D0A1AEBDE4E003F362C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D091AEBDE4E003F362C /* DataStore.swift */; };
+		4EF81D0F1AED5088003F362C /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF81D0E1AED5088003F362C /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +44,11 @@
 		4EF81CF31AEAEB7C003F362C /* KJNotepadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KJNotepadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF81CF81AEAEB7C003F362C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF81CF91AEAEB7C003F362C /* KJNotepadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KJNotepadTests.swift; sourceTree = "<group>"; };
-		4EF81D031AEAECA0003F362C /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		4EF81D051AEAECCE003F362C /* NoteUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteUtility.swift; sourceTree = "<group>"; };
 		4EF81D071AEAFC81003F362C /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
 		4EF81D091AEBDE4E003F362C /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		4EF81D0D1AEBEC5C003F362C /* KJNotepad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = KJNotepad.entitlements; sourceTree = "<group>"; };
+		4EF81D0E1AED5088003F362C /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,7 @@
 			children = (
 				4EF81D091AEBDE4E003F362C /* DataStore.swift */,
 				4EF81CE01AEAEB7B003F362C /* KJNotepad.xcdatamodeld */,
-				4EF81D031AEAECA0003F362C /* Note.swift */,
+				4EF81D0E1AED5088003F362C /* Note.swift */,
 				4EF81D051AEAECCE003F362C /* NoteUtility.swift */,
 			);
 			name = Data;
@@ -254,10 +254,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF81D041AEAECA0003F362C /* Note.swift in Sources */,
 				4EF81D0A1AEBDE4E003F362C /* DataStore.swift in Sources */,
 				4EF81CE21AEAEB7B003F362C /* KJNotepad.xcdatamodeld in Sources */,
 				4EF81D061AEAECCE003F362C /* NoteUtility.swift in Sources */,
+				4EF81D0F1AED5088003F362C /* Note.swift in Sources */,
 				4EF81CDF1AEAEB7B003F362C /* AppDelegate.swift in Sources */,
 				4EF81CE41AEAEB7B003F362C /* MasterViewController.swift in Sources */,
 				4EF81CE61AEAEB7B003F362C /* DetailViewController.swift in Sources */,

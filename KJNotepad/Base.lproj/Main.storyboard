@@ -40,9 +40,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="tJ0-uB-ntF" secondAttribute="bottom" id="0LU-G2-cjG"/>
                             <constraint firstItem="tJ0-uB-ntF" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" id="4Mk-7c-8FY"/>
                             <constraint firstAttribute="trailing" secondItem="tJ0-uB-ntF" secondAttribute="trailing" id="QW1-Lg-Mhs"/>
-                            <constraint firstItem="tJ0-uB-ntF" firstAttribute="bottom" secondItem="GAO-Cl-Wes" secondAttribute="top" id="U9h-Ro-Zkj"/>
                             <constraint firstItem="tJ0-uB-ntF" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="z4E-8x-b1Q"/>
                         </constraints>
                     </view>
@@ -50,7 +50,7 @@
                     <navigationItem key="navigationItem" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="textView" destination="tJ0-uB-ntF" id="bBq-LQ-AqV"/>
-                        <outlet property="textViewBottomConstraint" destination="U9h-Ro-Zkj" id="xFg-c3-oIH"/>
+                        <outlet property="textViewBottomConstraint" destination="0LU-G2-cjG" id="jK2-H0-Kk5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>

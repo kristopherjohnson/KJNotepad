@@ -15,15 +15,30 @@ import CoreData
 // that we can re-generate that as needed without losing this code.
 extension Note {
 
-    class func insertNewEntityInManagedObjectContext(context: NSManagedObjectContext) -> Note {
-        let note = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context) as! Note
+    class var entityName: String {
+        return "Note"
+    }
 
-        note.setDefaultValues()
+    class func entityDescriptionInManagedObjectContext(context: NSManagedObjectContext) -> NSEntityDescription {
+        return NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)!
+    }
+
+    class func insertNewEntityInManagedObjectContext(context: NSManagedObjectContext) -> Note {
+        let note = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! Note
+
+        note.setInitialValues()
+
+        NSLog("Created note %@", note.uuid)
 
         return note
     }
 
-    func setDefaultValues() {
+    class var sortByLastEditedDateDescending: NSSortDescriptor {
+        return NSSortDescriptor(key: "lastEditedDate", ascending: false)
+    }
+    
+    func setInitialValues() {
+        uuid = NSUUID().UUIDString
         createdDate = NSDate()
         lastEditedDate = createdDate
         title = "New note"
