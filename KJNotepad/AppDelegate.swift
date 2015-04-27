@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return true
     }
 
+    func applicationWillResignActive(application: UIApplication) {
+        dataStore.saveContext()
+    }
+    
     func applicationWillTerminate(application: UIApplication) {
         dataStore.saveContext()
     }

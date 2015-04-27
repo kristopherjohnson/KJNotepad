@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController, UITextViewDelegate {
 
@@ -19,16 +20,23 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         }
 
         didSet {
-            self.configureView()
+            if let note = detailItem {
+                detailItemUUID = note.uuid
+                managedObjectContext = note.managedObjectContext
+            }
+            else {
+                detailItemUUID = nil
+                managedObjectContext = nil
+            }
+
+            configureView()
         }
     }
 
-    func configureView() {
-        if let note = detailItem, textView = textView {
-            textView.text = note.text
-            textView.delegate = self
-        }
-    }
+    private var detailItemUUID: String?
+    private var managedObjectContext: NSManagedObjectContext?
+
+    // MARK: - View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +46,21 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        NSNotificationCenter.defaultCenter().addObserver(self,
+        let nc = NSNotificationCenter.defaultCenter()
+
+        nc.addObserver(self,
             selector: "keyboardWillChangeFrameNotification:",
             name: UIKeyboardWillChangeFrameNotification,
+            object: nil)
+
+        nc.addObserver(self,
+            selector: "storesWillChange:",
+            name: DataStoreStoresWillChangeNotification,
+            object: nil)
+
+        nc.addObserver(self,
+            selector: "storesDidChange:",
+            name: DataStoreStoresDidChangeNotification,
             object: nil)
 
         if let note = detailItem, textView = self.textView {
@@ -60,13 +80,28 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         super.viewDidDisappear(animated)
     }
 
+    // MARK: - View/model synchronization
+
+    private func configureView() {
+        if let textView = self.textView {
+            textView.delegate = self
+
+            if let note = detailItem {
+                textView.text = note.text
+            }
+            else {
+                textView.text = ""
+            }
+        }
+    }
+
     func textViewDidChange(textView: UITextView) {
         if let note = detailItem {
             note.text = textView.text
             note.lastEditedDate = NSDate()
         }
     }
-
+    
     func saveChanges() {
         if let note = detailItem, context = note.managedObjectContext {
             if context.hasChanges {
@@ -86,6 +121,32 @@ class DetailViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
+
+    // MARK: - iCloud
+
+    func storesWillChange(notification: NSNotification) {
+        if let textView = self.textView {
+            textView.userInteractionEnabled = false
+        }
+    }
+
+    func storesDidChange(notification: NSNotification) {
+        if let uuid = self.detailItemUUID, context = self.managedObjectContext {
+            if let note = Note.findByUniqueKey(uuid, inContext: context) {
+                detailItem = note
+            }
+            else {
+                // TODO: What happens if our item is no longer available?
+                detailItem = nil
+            }
+        }
+
+        if let textView = self.textView {
+            textView.userInteractionEnabled = true
+        }
+    }
+    
+    // MARK: - Keyboard
 
     func keyboardWillChangeFrameNotification(notification: NSNotification) {
         // Update the constraint for the bottom edge of the text view

@@ -13,8 +13,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
+    var addButton: UIBarButtonItem? = nil
+    var editButton: UIBarButtonItem? = nil
 
-    let dateFormatter: NSDateFormatter = {
+    lazy var dateFormatter: NSDateFormatter = {
         let df = NSDateFormatter()
         df.dateStyle = .ShortStyle
         df.timeStyle = .ShortStyle
@@ -32,21 +34,44 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        editButton = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = editButton
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+        addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
+
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let nc = NSNotificationCenter.defaultCenter()
+
+        nc.addObserver(self,
+            selector: "storesWillChange:",
+            name: DataStoreStoresWillChangeNotification,
+            object: nil)
+
+        nc.addObserver(self,
+            selector: "storesDidChange:",
+            name: DataStoreStoresDidChangeNotification,
+            object: nil)
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     func insertNewObject(sender: AnyObject) {
         let context = self.fetchedResultsController.managedObjectContext
         let entity = self.fetchedResultsController.fetchRequest.entity!
 
-        let newNote = Note.insertNewEntityInManagedObjectContext(context)
+        let newNote = Note.insertInContext(context)
 
         // Save the context.
         var error: NSError? = nil
@@ -124,15 +149,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             return _fetchedResultsController!
         }
 
-        let fetchRequest = NSFetchRequest()
-        let entity = Note.entityDescriptionInManagedObjectContext(self.managedObjectContext!)
-        fetchRequest.entity = entity
-
+        let fetchRequest = Note.fetchRequest()
         fetchRequest.fetchBatchSize = 20
 
         let sortDescriptor = Note.sortByLastEditedDateDescending
         let sortDescriptors = [sortDescriptor]
-
         fetchRequest.sortDescriptors = [sortDescriptor]
 
         let frc = NSFetchedResultsController(
@@ -188,6 +209,33 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
+    }
+
+    // MARK: - iCloud
+
+    func storesWillChange(notification: NSNotification) {
+        // Disable UI
+        if let editButton = self.editButton { editButton.enabled = false }
+        if let addButton  = self.addButton  { addButton.enabled = false }
+        if let tableView  = self.tableView  { tableView.userInteractionEnabled = false }
+    }
+
+    func storesDidChange(notification: NSNotification) {
+        // Re-fetch
+        var error: NSError? = nil
+        fetchedResultsController.performFetch(&error)
+        if let error = error {
+            NSLog("%@", error.localizedDescription)
+        }
+
+        // Re-enable UI
+        if let editButton = self.editButton { editButton.enabled = true }
+        if let addButton  = self.addButton  { addButton.enabled = true }
+        if let tableView  = self.tableView
+        {
+            tableView.reloadData()
+            tableView.userInteractionEnabled = true
+        }
     }
 }
 

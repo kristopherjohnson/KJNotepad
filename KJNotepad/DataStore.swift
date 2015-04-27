@@ -19,6 +19,11 @@ let DataStoreStoresWillChangeNotification
 let DataStoreStoresDidChangeNotification
 = "net.kristopherjohnson.KJNotepad.DataStoreStoresDidChangeNotification"
 
+/// Notification posted on the main queue when a NSPersistentStoreDidImportUbiquitousContentChangesNotification
+/// is received
+let DataStoreDidImportUbiquitousContentChanges
+= "net.kristopherjohnson.KJNotepad.DataStoreDidImportUbiquitousContentChanges"
+
 /// Manages the Core Data stack
 @objc class DataStore {
 
@@ -28,19 +33,19 @@ let DataStoreStoresDidChangeNotification
         registerForiCloudNotifications()
     }
 
-    lazy var applicationDocumentsDirectory: NSURL = {
+    private lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "net.kristopherjohnson.KJNotepad" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1] as! NSURL
         }()
 
-    lazy var managedObjectModel: NSManagedObjectModel = {
+    private lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("KJNotepad", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
         }()
 
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
+    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
@@ -113,17 +118,18 @@ let DataStoreStoresDidChangeNotification
             object: persistentStoreCoordinator)
 
         nc.addObserver(self,
-            selector: "persistentStoreDidImportUbiquitousContentChanges:",
+            selector: "didImportUbiquitousContentChanges:",
             name: NSPersistentStoreDidImportUbiquitousContentChangesNotification,
             object: persistentStoreCoordinator)
     }
 
-    func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
+    func didImportUbiquitousContentChanges(notification: NSNotification) {
         NSLog("%@", "\(notification.name) received")
 
         if let context = self.managedObjectContext {
-            context.performBlock {
+            context.performBlockAndWait {
                 context.mergeChangesFromContextDidSaveNotification(notification)
+                self.postNotification(DataStoreDidImportUbiquitousContentChanges)
             }
         }
     }
@@ -131,13 +137,9 @@ let DataStoreStoresDidChangeNotification
     func storesWillChange(notification: NSNotification) {
         NSLog("%@", "\(notification.name) received")
 
-        // Notify the UI
-        dispatch_sync(dispatch_get_main_queue()) {
-            self.postNotification(DataStoreStoresWillChangeNotification)
-        }
-
         if let context = self.managedObjectContext {
-            context.performBlockAndWait {
+            context.performBlock {
+                self.postNotification(DataStoreStoresWillChangeNotification)
                 if context.hasChanges {
                     var error: NSError? = nil
                     let success = context.save(&error)
@@ -145,9 +147,8 @@ let DataStoreStoresDidChangeNotification
                         NSLog("%@", [error!.localizedDescription])
                     }
                 }
-                else {
-                    context.reset()
-                }
+
+                context.reset()
             }
         }
     }
@@ -156,12 +157,12 @@ let DataStoreStoresDidChangeNotification
         NSLog("%@", "\(notification.name) received")
 
         // Notify the UI
-        dispatch_sync(dispatch_get_main_queue()) {
+        dispatch_async(dispatch_get_main_queue()) {
             self.postNotification(DataStoreStoresDidChangeNotification)
         }
     }
 
-    func postNotification(name: String) {
+    private func postNotification(name: String) {
         NSNotificationCenter.defaultCenter().postNotificationName(name, object: self)
     }
 }
