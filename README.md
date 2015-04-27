@@ -6,15 +6,17 @@ It demonstrates implementation of these features:
 - split view controller
 - responding to keyboard show/hide notifications
 
+
 ## To-Do
 
 - UI polish
 - sharing
 - WatchKit
 
+
 ## Credits
 
 I found these resources helpful:
 
-- _iCloud Programming Guide for Core Data_: <https://developer.apple.com/library/ios/documentation/DataManagement/Conceptual/UsingCoreDataWithiCloudPG/UsingSQLiteStoragewithiCloud/UsingSQLiteStoragewithiCloud.html>
-- "iCloud and Core Data" by Matthew Bischoff & Brian Capps: <http://www.objc.io/issue-10/icloud-core-data.html>
+- [iCloud Programming Guide for Core Data](https://developer.apple.com/library/ios/documentation/DataManagement/Conceptual/UsingCoreDataWithiCloudPG/UsingSQLiteStoragewithiCloud/UsingSQLiteStoragewithiCloud.html)
+- ["iCloud and Core Data" by Matthew Bischoff & Brian Capps](http://www.objc.io/issue-10/icloud-core-data.html)
